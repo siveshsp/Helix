@@ -18,7 +18,7 @@ from logger import log_attack
 from correlation_engine import track_attack_action, is_coordinated_attack
 from threat_intel import analyze_threat, get_threat_level
 from deception_engine import check_fake_security
-
+from database import init_db
 # Advanced features
 from ml_classifier import train_ml_classifier, predict_attack_type, detect_anomaly, track_credential_attempt
 from external_threat_intel import lookup_threat_intel, add_threat, configure_threat_intel
@@ -738,6 +738,7 @@ async def startup_event():
     """Initialize honeypot on startup."""
     print("[*] Honeypot application starting...")
     print("[*] Waiting for attackers...")
+    init_db()
 
 
 @app.on_event("shutdown")
